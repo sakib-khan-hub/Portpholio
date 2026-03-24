@@ -1,69 +1,14 @@
 /* =========================================
-   CSS VARIABLES & GLOBAL RESET
-========================================= */
-/* =========================================
-   TYPEWRITER TRANSITION SECTION (SPACING FIXED)
-========================================= */
-.typewriter-section {
-    padding: 1.5rem 0; /* Massively reduced the internal space */
-    margin-top: -5rem; /* Pulls the text up closer to the grid cards */
-    margin-bottom: -5rem; /* Pulls the contact section closer to the text */
-    background-color: var(--bg-main);
-    position: relative;
-    z-index: 10;
-}
-
-.typewriter-heading {
-    font-size: 4rem; /* Slightly sized down so it fits the tighter space */
-    font-weight: 700;
-    color: var(--text-primary);
-    line-height: 1.2;
-    letter-spacing: -1px;
-}
-
-/* The blinking cursor */
-.typed-cursor {
-    font-weight: 300;
-    font-size: 4.5rem;
-    color: var(--accent-color);
-    animation: blink 1s step-end infinite;
-    vertical-align: text-bottom;
-}
-
-@keyframes blink {
-    from, to { opacity: 1; }
-    50% { opacity: 0; }
-}
-
-/* Responsive adjustments for mobile so it doesn't overlap on small screens */
-@media (max-width: 768px) {
-    .typewriter-section {
-        padding: 1rem 0;
-        margin-top: -2rem;
-        margin-bottom: -2rem;
-    }
-    .typewriter-heading {
-        font-size: 2.5rem;
-    }
-    .typed-cursor {
-        font-size: 2.8rem;
-    }
-}
-/* =========================================
-   CUSTOM FONT FACES (For Nexa)
+   1. FONTS & VARIABLES
 ========================================= */
 @font-face {
     font-family: 'Nexa';
-    /* Create a 'fonts' folder and put your Nexa font files inside */
     src: url('fonts/Nexa-Bold.woff2') format('woff2'),
          url('fonts/Nexa-Bold.woff') format('woff');
     font-weight: 700;
     font-style: normal;
 }
 
-/* =========================================
-   CSS VARIABLES & GLOBAL RESET
-========================================= */
 :root {
     --bg-main: #f8fafc;
     --bg-card: #ffffff;
@@ -74,10 +19,9 @@
     --border-color: rgba(15, 23, 42, 0.08);
     --glass-bg: rgba(255, 255, 255, 0.7);
     
-    /* YOUR NEW FONTS */
     --font-heading: 'Poppins', sans-serif;
     --font-body: 'Roboto', sans-serif;
-    --font-logo: 'Nexa', 'Poppins', sans-serif; /* Fallback to Poppins if Nexa isn't loaded */
+    --font-logo: 'Nexa', 'Poppins', sans-serif;
     
     --transition-fast: 0.2s ease;
     --transition-slow: 0.5s cubic-bezier(0.25, 1, 0.5, 1);
@@ -88,102 +32,86 @@
 }
 
 /* =========================================
-   GLOBAL SPACING & WHITESPACE
+   2. GLOBAL RESET & TYPOGRAPHY
 ========================================= */
-
-/* 1. Massive space for all main sections (Desktop) */
-section {
-    padding: 10rem 0; /* Adds huge space to the top and bottom of every section */
-    position: relative;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    cursor: none;
 }
 
-/* 2. Keep the content centered with side breathing room */
-.container {
-    max-width: 1300px;
-    margin: 0 auto;
-    padding: 0 2rem;
+html {
+    scroll-behavior: smooth;
 }
 
-/* 3. The Hero section needs extra top space because of the fixed Navbar */
-.hero {
-    padding-top: 14rem; /* Pushes content down below the nav */
-    padding-bottom: 8rem;
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-}
-
-/* 4. Ensure titles are separated from the content below them */
-.section-title {
-    margin-bottom: 4rem; 
-}
-
-/* =========================================
-   RESPONSIVE SPACING (MOBILE)
-========================================= */
-/* We must shrink the spacing on phones so users don't scroll forever */
-
-@media (max-width: 768px) {
-    section {
-        padding: 5rem 0; /* Cuts the massive space in half for small screens */
-    }
-    
-    .hero {
-        padding-top: 8rem;
-        padding-bottom: 5rem;
-        min-height: auto;
-    }
-
-    .section-title {
-        margin-bottom: 2.5rem;
-    }
-}
-
-/* =========================================
-   TYPOGRAPHY & UTILITIES
-========================================= */
-/* Update the body font */
 body {
-    font-family: var(--font-body); /* Uses Roboto */
+    font-family: var(--font-body);
     background-color: var(--bg-main);
     color: var(--text-primary);
     line-height: 1.6;
     overflow-x: hidden;
 }
 
-/* Update the headings */
 h1, h2, h3, h4 {
-    font-family: var(--font-heading); /* Uses Poppins */
+    font-family: var(--font-heading);
     font-weight: 700;
     line-height: 1.1;
 }
 
-/* Update the Brand/Logo */
 .brand {
-    font-family: var(--font-logo); /* Uses Nexa */
+    font-family: var(--font-logo);
     font-size: 1.8rem;
     font-weight: 800;
     color: var(--text-primary);
     text-decoration: none;
 }
 
+.brand span { 
+    color: var(--accent-color); 
+}
+
+/* Utility Classes (যেগুলো মিসিং ছিল) */
+.text-center { text-align: center; }
+.mt-4 { margin-top: 2rem; }
+.mb-4 { margin-bottom: 2rem; }
+.w-full { width: 100%; }
+
 /* =========================================
-   CUSTOM CURSOR
+   3. LAYOUT & SPACING
+========================================= */
+section {
+    padding: 10rem 0;
+    position: relative;
+    scroll-margin-top: 100px;
+}
+
+.container {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.section-title {
+    margin-bottom: 4rem; 
+}
+
+/* =========================================
+   4. UI COMPONENTS (Buttons, Cursor, Panels)
 ========================================= */
 .cursor-dot {
-    width: 8px;
-    height: 8px;
+    width: 8px; height: 8px;
     background-color: var(--accent-color);
 }
+
 .cursor-outline {
-    width: 40px;
-    height: 40px;
+    width: 40px; height: 40px;
     border: 2px solid var(--accent-color);
 }
+
 .cursor-dot, .cursor-outline {
     position: fixed;
-    top: 0;
-    left: 0;
+    top: 0; left: 0;
     transform: translate(-50%, -50%);
     border-radius: 50%;
     z-index: 9999;
@@ -191,9 +119,6 @@ h1, h2, h3, h4 {
     transition: width 0.2s, height 0.2s, background-color 0.2s;
 }
 
-/* =========================================
-   BUTTONS
-========================================= */
 .btn {
     display: inline-flex;
     align-items: center;
@@ -209,47 +134,15 @@ h1, h2, h3, h4 {
     cursor: none;
 }
 
-.btn-primary {
-    background-color: var(--text-primary);
-    color: white;
-}
+.btn-primary { background-color: var(--text-primary); color: white; }
+.btn-primary:hover { background-color: var(--accent-color); box-shadow: 0 10px 25px var(--accent-glow); }
+.btn-outline { background-color: transparent; border: 1px solid var(--border-color); color: var(--text-primary); }
+.btn-outline:hover { border-color: var(--text-primary); }
+.btn-whatsapp { background-color: #25D366; color: white; }
+.btn-whatsapp:hover { background-color: #128C7E; box-shadow: 0 10px 25px rgba(37, 211, 102, 0.3); }
+.btn-lg { padding: 1.2rem 2.5rem; font-size: 1.1rem; }
+.hover-lift:hover { transform: translateY(-5px); }
 
-.btn-primary:hover {
-    background-color: var(--accent-color);
-    box-shadow: 0 10px 25px var(--accent-glow);
-}
-
-.btn-outline {
-    background-color: transparent;
-    border: 1px solid var(--border-color);
-    color: var(--text-primary);
-}
-
-.btn-outline:hover {
-    border-color: var(--text-primary);
-}
-
-.btn-whatsapp {
-    background-color: #25D366;
-    color: white;
-}
-.btn-whatsapp:hover {
-    background-color: #128C7E;
-    box-shadow: 0 10px 25px rgba(37, 211, 102, 0.3);
-}
-
-.btn-lg {
-    padding: 1.2rem 2.5rem;
-    font-size: 1.1rem;
-}
-
-.hover-lift:hover {
-    transform: translateY(-5px);
-}
-
-/* =========================================
-   GLASSMORPHISM & UI PANELS
-========================================= */
 .glass-panel {
     background: var(--glass-bg);
     backdrop-filter: blur(16px);
@@ -258,585 +151,233 @@ h1, h2, h3, h4 {
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.03);
 }
 
+.reveal {
+    opacity: 0;
+    transform: translateY(40px) scale(0.98);
+    transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+    will-change: opacity, transform;
+}
+.reveal.active { opacity: 1; transform: translateY(0) scale(1); }
+.btn, .brand, .social-icon { transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), background-color 0.2s, color 0.2s; will-change: transform; }
+
 /* =========================================
-   NAVIGATION
+   5. NAVIGATION
 ========================================= */
 .navbar {
     position: fixed;
-    top: 0;
-    width: 100%;
+    top: 0; width: 100%;
     padding: 1.5rem 0;
     z-index: 1000;
     transition: var(--transition-slow);
 }
-
 .navbar.scrolled {
     padding: 1rem 0;
     background: var(--glass-bg);
     backdrop-filter: blur(20px);
     border-bottom: 1px solid var(--border-color);
 }
-
-.nav-container {
-    max-width: 1300px;
-    margin: 0 auto;
-    padding: 0 2rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.brand {
-    font-family: var(--font-heading);
-    font-size: 1.8rem;
-    font-weight: 800;
-    color: var(--text-primary);
-    text-decoration: none;
-}
-
-.brand span { color: var(--accent-color); }
-
-.nav-menu {
-    display: flex;
-    gap: 2.5rem;
-    list-style: none;
-}
-
-.nav-link {
-    text-decoration: none;
-    color: var(--text-primary);
-    font-weight: 500;
-    position: relative;
-}
-
-.nav-link::after {
-    content: '';
-    position: absolute;
-    width: 0;
-    height: 2px;
-    bottom: -4px;
-    left: 0;
-    background-color: var(--accent-color);
-    transition: width 0.3s ease;
-}
-
+.nav-container { max-width: 1300px; margin: 0 auto; padding: 0 2rem; display: flex; justify-content: space-between; align-items: center; }
+.nav-menu { display: flex; gap: 2.5rem; list-style: none; }
+.nav-link { text-decoration: none; color: var(--text-primary); font-weight: 500; position: relative; }
+.nav-link::after { content: ''; position: absolute; width: 0; height: 2px; bottom: -4px; left: 0; background-color: var(--accent-color); transition: width 0.3s ease; }
 .nav-link:hover::after { width: 100%; }
-
-.nav-right {
-    display: flex;
-    align-items: center;
-    gap: 1.5rem;
-}
-
+.nav-right { display: flex; align-items: center; gap: 1.5rem; }
 .hamburger { display: none; cursor: none; }
 .bar { display: block; width: 25px; height: 2px; margin: 5px auto; background-color: var(--text-primary); transition: all 0.3s; }
 
 /* =========================================
-   HERO SECTION
+   6. HERO SECTION
 ========================================= */
-.hero {
-    position: relative;
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    padding-top: 6rem;
-    overflow: hidden;
-}
+.hero { position: relative; min-height: 100vh; display: flex; align-items: center; padding-top: 14rem; padding-bottom: 8rem; overflow: hidden; }
+.blob { position: absolute; border-radius: 50%; filter: blur(80px); z-index: -1; opacity: 0.6; }
+.blob-1 { width: 500px; height: 500px; background: #dbeafe; top: -100px; right: -100px; animation: float 8s infinite alternate ease-in-out; }
+.blob-2 { width: 400px; height: 400px; background: #f3e8ff; bottom: -50px; left: -100px; animation: float 10s infinite alternate-reverse ease-in-out; }
+@keyframes float { 0% { transform: translate(0, 0) scale(1); } 100% { transform: translate(30px, 50px) scale(1.1); } }
 
-/* Background Animated Blobs */
-.blob {
-    position: absolute;
-    border-radius: 50%;
-    filter: blur(80px);
-    z-index: -1;
-    opacity: 0.6;
-}
-.blob-1 {
-    width: 500px;
-    height: 500px;
-    background: #dbeafe;
-    top: -100px;
-    right: -100px;
-    animation: float 8s infinite alternate ease-in-out;
-}
-.blob-2 {
-    width: 400px;
-    height: 400px;
-    background: #f3e8ff;
-    bottom: -50px;
-    left: -100px;
-    animation: float 10s infinite alternate-reverse ease-in-out;
-}
+.hero-container { max-width: 1300px; margin: 0 auto; padding: 0 2rem; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+.status-pill { display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px; background: white; border: 1px solid var(--border-color); border-radius: var(--radius-pill); font-size: 0.875rem; font-weight: 500; margin-bottom: 2rem; box-shadow: 0 2px 10px rgba(0,0,0,0.02); }
+.pulse { width: 8px; height: 8px; background-color: #10b981; border-radius: 50%; animation: pulse-green 2s infinite; }
+@keyframes pulse-green { 0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); } 70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(16, 185, 129, 0); } 100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); } }
 
-@keyframes float {
-    0% { transform: translate(0, 0) scale(1); }
-    100% { transform: translate(30px, 50px) scale(1.1); }
+.hero-title { font-size: 5vw; margin-bottom: 1.5rem; letter-spacing: -1px; }
+.text-gradient { 
+    background: linear-gradient(135deg, var(--accent-color), #8b5cf6); 
+    -webkit-background-clip: text; 
+    background-clip: text;
+    -webkit-text-fill-color: transparent; 
+    color: transparent; 
 }
-
-.hero-container {
-    max-width: 1300px;
-    margin: 0 auto;
-    padding: 0 2rem;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4rem;
-    align-items: center;
-}
-
-.status-pill {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 8px 16px;
-    background: white;
-    border: 1px solid var(--border-color);
-    border-radius: var(--radius-pill);
-    font-size: 0.875rem;
-    font-weight: 500;
-    margin-bottom: 2rem;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.02);
-}
-
-.pulse {
-    width: 8px;
-    height: 8px;
-    background-color: #10b981;
-    border-radius: 50%;
-    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
-    animation: pulse-green 2s infinite;
-}
-
-@keyframes pulse-green {
-    0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
-    70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(16, 185, 129, 0); }
-    100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
-}
-
-.hero-title {
-    font-size: 5vw;
-    margin-bottom: 1.5rem;
-    letter-spacing: -1px;
-}
-
-.hero-subtitle {
-    font-size: 1.25rem;
-    color: var(--text-secondary);
-    margin-bottom: 2.5rem;
-    max-width: 90%;
-}
-
-.hero-actions {
-    display: flex;
-    gap: 1rem;
-    margin-bottom: 3rem;
-}
-
-.hero-stats {
-    display: flex;
-    gap: 3rem;
-    border-top: 1px solid var(--border-color);
-    padding-top: 2rem;
-}
-
-.stat-item h3 {
-    font-size: 2.5rem;
-    color: var(--text-primary);
-    display: inline;
-}
-.stat-item span { font-size: 1.5rem; font-weight: 700; color: var(--accent-color);}
+.hero-subtitle { font-size: 1.25rem; color: var(--text-secondary); margin-bottom: 2.5rem; max-width: 90%; }
+.hero-actions { display: flex; gap: 1rem; margin-bottom: 3rem; }
+.hero-stats { display: flex; gap: 3rem; border-top: 1px solid var(--border-color); padding-top: 2rem; }
+.stat-item h3 { font-size: 2.5rem; color: var(--text-primary); display: inline; }
+.stat-item span { font-size: 1.5rem; font-weight: 700; color: var(--accent-color); }
 .stat-item p { color: var(--text-secondary); font-size: 0.9rem; font-weight: 500; }
 
-.image-wrapper {
-    position: relative;
-    border-radius: var(--radius-lg);
-    padding: 1rem;
-    transform: rotate(2deg);
-    transition: var(--transition-slow);
-}
-
+.image-wrapper { position: relative; border-radius: var(--radius-lg); padding: 1rem; transform: rotate(2deg); transition: var(--transition-slow); }
 .image-wrapper:hover { transform: rotate(0deg) scale(1.02); }
-
-.image-wrapper img {
-    width: 100%;
-    border-radius: var(--radius-md);
-    display: block;
-    object-fit: cover;
-}
-
-.floating-badge {
-    position: absolute;
-    padding: 1rem 1.5rem;
-    border-radius: var(--radius-pill);
-    font-weight: 600;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-}
-
+.image-wrapper img { width: 100%; border-radius: var(--radius-md); display: block; object-fit: cover; }
+.floating-badge { position: absolute; padding: 1rem 1.5rem; border-radius: var(--radius-pill); font-weight: 600; display: flex; align-items: center; gap: 0.5rem; box-shadow: 0 10px 30px rgba(0,0,0,0.08); }
 .top-right { top: -20px; right: -20px; animation: float 6s infinite ease-in-out; }
 .bottom-left { bottom: 30px; left: -30px; animation: float 6s infinite alternate-reverse ease-in-out; }
 
 /* =========================================
-   MARQUEE
+   7. MARQUEE
 ========================================= */
 .border-y { border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color); }
-.scrolling-text-container {
-    background-color: white;
-    padding: 2rem 0;
-    overflow: hidden;
-    white-space: nowrap;
-    position: relative;
-}
-
-.scrolling-text {
-    display: inline-block;
-    animation: scroll 20s linear infinite;
-    font-family: var(--font-heading);
-    font-size: 2rem;
-    font-weight: 800;
-    color: transparent;
-    -webkit-text-stroke: 1px var(--text-secondary);
-}
-
+.scrolling-text-container { background-color: white; padding: 2rem 0; overflow: hidden; white-space: nowrap; position: relative; }
+.scrolling-text { display: inline-block; animation: scroll 20s linear infinite; font-family: var(--font-heading); font-size: 2rem; font-weight: 800; color: transparent; -webkit-text-stroke: 1px var(--text-secondary); }
 .scrolling-text span { margin: 0 2rem; transition: var(--transition-fast); }
 .scrolling-text span:hover { color: var(--text-primary); -webkit-text-stroke: 0; }
-
-@keyframes scroll {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
-}
+@keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
 
 /* =========================================
-   BENTO GRID SERVICES
+   8. BENTO GRID SERVICES
 ========================================= */
-.bento-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-auto-rows: minmax(250px, auto);
-    gap: 1.5rem;
-}
-
-.bento-card {
-    padding: 3rem;
-    border-radius: var(--radius-lg);
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    transition: var(--transition-slow);
-    position: relative;
-    overflow: hidden;
-}
-
-.bento-card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background: radial-gradient(800px circle at var(--mouse-x) var(--mouse-y), rgba(37, 99, 235, 0.06), transparent 40%);
-    opacity: 0;
-    transition: opacity 0.5s;
-    z-index: 0;
-    pointer-events: none;
-}
-
+.section-tag { font-size: 0.875rem; font-weight: 600; letter-spacing: 2px; color: var(--accent-color); text-transform: uppercase; margin-bottom: 1rem; display: inline-block; }
+.bento-grid { display: grid; grid-template-columns: repeat(3, 1fr); grid-auto-rows: minmax(250px, auto); gap: 2.5rem; }
+.bento-card { padding: 3.5rem; border-radius: 32px; display: flex; flex-direction: column; justify-content: space-between; transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1); position: relative; overflow: hidden; box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.05); }
+.bento-card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(800px circle at var(--mouse-x) var(--mouse-y), rgba(37, 99, 235, 0.08), transparent 40%); opacity: 0; transition: opacity 0.5s; z-index: 0; pointer-events: none; }
 .bento-card:hover::before { opacity: 1; }
-.bento-card:hover { transform: translateY(-5px); border-color: var(--accent-color); }
-
+.bento-card:hover { transform: translateY(-8px); border-color: var(--accent-color); box-shadow: 0 20px 50px -15px rgba(37, 99, 235, 0.15); }
 .bento-card > * { position: relative; z-index: 1; }
 
 .large { grid-column: span 2; grid-row: span 2; background: white; }
-.medium { grid-column: span 1; grid-row: span 2; background: #0f172a; color: white; }
-.small { grid-column: span 1; grid-row: span 1; background: white;}
+.medium { grid-column: span 1; grid-row: span 2; background: #0a0f1c; color: white; }
+.small { grid-column: span 1; grid-row: span 1; background: white; }
 
-.card-icon {
-    width: 60px; height: 60px;
-    background: var(--bg-main);
-    border-radius: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.8rem;
-    color: var(--accent-color);
-    margin-bottom: 2rem;
-}
-
-.medium .card-icon { background: rgba(255,255,255,0.1); color: white; }
+.card-icon { width: 65px; height: 65px; background: var(--bg-main); border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 2rem; color: var(--accent-color); margin-bottom: 2.5rem; }
+.medium .card-icon { background: rgba(255,255,255,0.05); color: white; border: 1px solid rgba(255, 255, 255, 0.1); }
 .medium h3 { color: white; }
-.medium p { color: #cbd5e1; }
+.medium p { color: rgba(255, 255, 255, 0.7); }
 
-.bento-card h3 { font-size: 1.8rem; margin-bottom: 1rem; }
-.bento-card p { color: var(--text-secondary); margin-bottom: 2rem; }
-.small h3 { font-size: 1.4rem; }
-
-.card-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    font-weight: 600;
-    color: var(--text-primary);
-    text-decoration: none;
-    margin-top: auto;
-}
-.card-link:hover { color: var(--accent-color); }
+.bento-card h3 { font-size: 2rem; margin-bottom: 1.2rem; line-height: 1.2; }
+.bento-card p { color: var(--text-secondary); margin-bottom: 2rem; line-height: 1.7; font-size: 1.05rem; }
+.small h3 { font-size: 1.5rem; }
+.card-link { display: inline-flex; align-items: center; gap: 0.5rem; font-weight: 600; color: var(--text-primary); text-decoration: none; margin-top: auto; padding-bottom: 0.5rem; border-bottom: 2px solid transparent; transition: var(--transition-fast); }
+.card-link:hover { color: var(--accent-color); border-bottom-color: var(--accent-color); }
 
 /* =========================================
-   CONTACT SECTION
+   9. TYPEWRITER SECTION
 ========================================= */
-.contact-wrapper {
-    display: grid;
-    grid-template-columns: 1.5fr 1fr;
-    gap: 4rem;
-    padding: 4rem;
-    border-radius: var(--radius-lg);
-    background: white;
-}
+.typewriter-section { padding: 1.5rem 0; margin-top: -5rem; margin-bottom: -5rem; background-color: var(--bg-main); position: relative; z-index: 10; }
+.typewriter-heading { font-size: 4rem; font-weight: 700; color: var(--text-primary); line-height: 1.2; letter-spacing: -1px; }
+.typed-cursor { font-weight: 300; font-size: 4.5rem; color: var(--accent-color); animation: blink 1s step-end infinite; vertical-align: text-bottom; }
+@keyframes blink { from, to { opacity: 1; } 50% { opacity: 0; } }
 
+/* =========================================
+   10. CONTACT SECTION & FORM
+========================================= */
+.contact-wrapper { display: grid; grid-template-columns: 1.5fr 1fr; gap: 4rem; padding: 4rem; border-radius: var(--radius-lg); background: white; }
 .contact-info h2 { font-size: 2.5rem; margin-bottom: 1rem; }
-.contact-info p { color: var(--text-secondary); font-size: 1.1rem; }
-
-.contact-item {
-    display: flex;
-    align-items: center;
-    gap: 1.5rem;
-    margin-bottom: 1.5rem;
+.contact-info p { 
+    color: var(--text-secondary); 
+    font-size: 1.1rem; 
+    line-height: 1.8; 
+    margin-bottom: 3.5rem; 
 }
 
-.icon-box {
-    width: 50px; height: 50px;
-    background: var(--bg-main);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--accent-color);
-    font-size: 1.2rem;
+.contact-item { 
+    display: flex; 
+    align-items: center; 
+    gap: 1.5rem; 
+    margin-bottom: 2.5rem; 
 }
 
-.contact-item h4 { font-size: 1rem; color: var(--text-secondary); margin-bottom: 0.2rem; }
-.contact-item a, .contact-item p { font-size: 1.2rem; font-weight: 600; color: var(--text-primary); text-decoration: none; }
+.contact-item:last-child {
+    margin-bottom: 0; 
+}
+
+.icon-box { width: 50px; height: 50px; background: var(--bg-main); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--accent-color); font-size: 1.2rem; }
+
+.contact-item h4 { 
+    font-size: 1rem; 
+    color: var(--text-secondary); 
+    margin: 0 0 0.2rem 0; 
+    line-height: 1;
+}
+
+.contact-item a, 
+.contact-item p { 
+    font-size: 1.2rem; 
+    font-weight: 600; 
+    color: var(--text-primary); 
+    text-decoration: none; 
+    margin: 0; 
+    line-height: 1.2;
+}
+
 .contact-item a:hover { color: var(--accent-color); }
 
-/* =========================================
-   CONTACT CTA BOX (DARK THEME)
-========================================= */
-.contact-cta {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 3rem;
-    background: #0f172a; /* চমৎকার একটি ডার্ক কালার (কালো) */
-    border-radius: var(--radius-md);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); /* হালকা শ্যাডো যাতে বক্সটা ভেসে থাকে */
-}
-
-/* হেডলাইন সাদা করার জন্য */
-.contact-cta h3 {
-    color: #ffffff; 
-    margin-bottom: 1rem;
-}
-
-/* নিচের ছোট লেখাটি হালকা সাদা/গ্রে করার জন্য */
-.contact-cta p.text-sm {
-    color: rgba(255, 255, 255, 0.7); 
-}
+.contact-form-box { background: #0f172a; padding: 3rem; border-radius: var(--radius-lg); box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15); color: white; }
+.contact-form-box h3 { color: #ffffff; font-size: 2rem; margin-bottom: 0.5rem; }
+.contact-form-box .mb-4 { margin-bottom: 2.5rem; color: rgba(255, 255, 255, 0.7); }
+.contact-form { display: flex; flex-direction: column; gap: 1.2rem; }
+.input-group input, .input-group textarea { width: 100%; padding: 1.2rem 1.5rem; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 12px; color: white; font-family: var(--font-body); font-size: 1rem; transition: var(--transition-fast); }
+.input-group input::placeholder, .input-group textarea::placeholder { color: rgba(255, 255, 255, 0.4); }
+.input-group input:focus, .input-group textarea:focus { outline: none; border-color: var(--accent-color); background: rgba(255, 255, 255, 0.1); box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1); }
 
 /* =========================================
-   FOOTER
+   11. FOOTER
 ========================================= */
-footer {
-    background: var(--text-primary);
-    color: white;
-    padding: 5rem 0 2rem;
-}
-
-.footer-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-bottom: 3rem;
-    border-bottom: 1px solid rgba(255,255,255,0.1);
-}
-
+footer { background: var(--text-primary); color: white; padding: 5rem 0 2rem; }
+.footer-content { display: flex; justify-content: space-between; align-items: center; padding-bottom: 3rem; border-bottom: 1px solid rgba(255,255,255,0.1); }
 .footer-brand h2 { font-size: 2rem; margin-bottom: 0.5rem; }
 .footer-brand p { color: #94a3b8; }
-
 .footer-socials { display: flex; gap: 1rem; }
-.social-icon {
-    width: 45px; height: 45px;
-    border-radius: 50%;
-    background: rgba(255,255,255,0.1);
-    color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none;
-    transition: var(--transition-fast);
-}
+.social-icon { width: 45px; height: 45px; border-radius: 50%; background: rgba(255,255,255,0.1); color: white; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: var(--transition-fast); }
 .social-icon:hover { background: var(--accent-color); transform: translateY(-3px); }
-
-.footer-bottom {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    max-width: 1300px;
-    margin: 0 auto;
-    padding: 2rem 2rem 0;
-    color: #64748b;
-}
-
-.back-to-top {
-    color: white;
-    background: rgba(255,255,255,0.1);
-    padding: 0.8rem 1rem;
-    border-radius: 8px;
-    text-decoration: none;
-}
+.footer-bottom { display: flex; justify-content: space-between; align-items: center; max-width: 1300px; margin: 0 auto; padding: 2rem 2rem 0; color: #64748b; }
+.back-to-top { color: white; background: rgba(255,255,255,0.1); padding: 0.8rem 1rem; border-radius: 8px; text-decoration: none; }
 
 /* =========================================
-   MASTER MOBILE RESPONSIVE FIX (১০০% পারফেক্ট)
+   12. RESPONSIVE QUERIES (TABLET & MOBILE)
 ========================================= */
-
-/* Tablet & Mobile (৯৯২ পিক্সেলের নিচের স্ক্রিনের জন্য) */
 @media (max-width: 992px) {
-    /* ডেক্সটপের পাশাপাশি ডিজাইনগুলোকে ভেঙে একটার নিচে আরেকটা আনা */
-    .hero-container, 
-    .contact-wrapper { 
-        grid-template-columns: 1fr; 
-        text-align: center; 
-    }
-    
-    /* Bento Grid (সার্ভিস সেকশন) এক কলামে আনা */
-    .bento-grid { 
-        grid-template-columns: 1fr; 
-        gap: 1.5rem; 
-    }
-    .large, .medium, .small { 
-        grid-column: span 1; 
-        grid-row: auto; 
-    }
-    
-    .hero-stats { 
-        justify-content: center; 
-    }
-    .image-wrapper { 
-        margin-top: 2rem; 
-    }
+    .hero-container, .contact-wrapper { grid-template-columns: 1fr; text-align: center; }
+    .bento-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+    .large, .medium, .small { grid-column: span 1; grid-row: auto; }
+    .hero-stats { justify-content: center; }
+    .image-wrapper { margin-top: 2rem; }
 }
 
-/* Mobile Phones (৭৬৮ পিক্সেল বা তার ছোট স্ক্রিনের জন্য) */
 @media (max-width: 768px) {
-    
-    /* ১. ওভারফ্লো ফিক্স এবং বাম দিকের সাদা গ্যাপ রিমুভ (শুধুমাত্র মোবাইলের জন্য) */
-    html, body { 
-        overflow-x: hidden !important; 
-        width: 100% !important; 
-        margin: 0; 
-        padding: 0;
-    }
+    html, body { overflow-x: hidden !important; width: 100% !important; max-width: 100% !important; margin: 0 !important; padding: 0 !important; left: 0 !important; position: relative !important; }
+    * { box-sizing: border-box !important; }
 
-    /* ন্যাভিগেশন বার ফিক্স (শুধুমাত্র মোবাইলের জন্য) */
-    .navbar {
-        left: 0 !important;
-        width: 100% !important;
-    }
+    section { padding: 4rem 0 !important; }
+    .hero { padding-top: 7rem !important; padding-bottom: 3rem !important; min-height: auto; }
     
-    .nav-container {
-        padding: 0 1.5rem !important;
-        max-width: 100%;
-    }
-    /* ২. হ্যামবার্গার মেনু (Hamburger) এবং ন্যাভিগেশন বার ফিক্স */
-    .nav-menu {
-        position: fixed;
-        left: -100%;
-        top: 80px;
-        flex-direction: column;
-        background: #ffffff;
-        width: 100%;
-        height: calc(100vh - 80px);
-        text-align: center;
-        transition: 0.3s ease-in-out;
-        padding-top: 3rem;
-        box-shadow: 0 10px 20px rgba(0,0,0,0.05);
-        z-index: 999;
-    }
+    .navbar { left: 0 !important; width: 100% !important; box-sizing: border-box; }
+    .nav-container { padding: 0 1.5rem !important; width: 100%; }
+    .nav-menu { position: fixed; left: -100%; top: 80px; flex-direction: column; background: #ffffff; width: 100%; height: calc(100vh - 80px); text-align: center; transition: 0.3s ease-in-out; padding-top: 3rem; box-shadow: 0 10px 20px rgba(0,0,0,0.05); z-index: 999; }
     .nav-menu.active { left: 0; }
     .nav-menu li { margin-bottom: 2rem; }
     .nav-link { font-size: 1.5rem; }
-    
-    /* মোবাইলের হেডারে জায়গা বাঁচাতে "Let's Talk" বাটনটি হাইড করে শুধু মেনু আইকন রাখা হলো */
     .nav-right .btn-primary { display: none; }
-    
     .hamburger { display: block !important; cursor: pointer; }
     .hamburger.active .bar:nth-child(1) { transform: translateY(7px) rotate(45deg); }
     .hamburger.active .bar:nth-child(2) { transform: translateY(-7px) rotate(-45deg); }
 
-    /* ৩. হিরো সেকশন এবং বাটন ফিক্স (যাতে ডানে কেটে না যায়) */
-    section { padding: 4rem 0 !important; }
-    .hero { padding-top: 7rem !important; padding-bottom: 3rem !important; min-height: auto; }
     .hero-title { font-size: 2.6rem; line-height: 1.2; word-wrap: break-word; hyphens: auto; }
-    .hero-subtitle { padding: 0 1rem; }
-    
-    /* বাটন যেন স্ক্রিনের বাইরে না যায় তার জন্য box-sizing ও padding অ্যাড করা হলো */
-    .hero-actions { 
-        flex-direction: column; 
-        width: 100%; 
-        gap: 1rem; 
-        padding: 0 1.5rem; 
-        box-sizing: border-box; 
-    }
-    .hero-actions .btn { 
-        width: 100%; 
-        justify-content: center; 
-        box-sizing: border-box;
-    }
-
-    /* ৪. অন্যান্য স্পেসিং ফিক্স */
+    .hero-subtitle { padding: 0 1rem; font-size: 1rem; }
+    .hero-actions { flex-direction: column; width: 100%; gap: 1rem; padding: 0 1.5rem; box-sizing: border-box; }
+    .hero-actions .btn { width: 100%; justify-content: center; box-sizing: border-box; }
     .hero-stats { gap: 2rem; padding-top: 1rem; }
+    
     .bento-card { padding: 2rem; border-radius: 24px; }
     .bento-card h3 { font-size: 1.5rem; }
-    .contact-wrapper { padding: 2rem; gap: 2rem; }
-    .typewriter-heading { font-size: 2.2rem; }
-    .typed-cursor { font-size: 2.5rem; }
+    .card-icon { width: 50px; height: 50px; font-size: 1.5rem; margin-bottom: 1.5rem; }
     
-    /* ৫. মোবাইলে কাস্টম মাউস বন্ধ রাখা */
+    .typewriter-section { padding: 1rem 0; margin-top: -2rem; margin-bottom: -2rem; }
+    .typewriter-heading { font-size: 2.5rem; }
+    .typed-cursor { font-size: 2.8rem; }
+    
+    .contact-wrapper { padding: 2rem; gap: 2rem; }
+    .contact-info h2 { font-size: 1.8rem; }
+    .contact-item { flex-direction: column; text-align: center; gap: 0.5rem; }
+    .contact-form-box { padding: 2rem 1.5rem; }
+    
     .cursor-dot, .cursor-outline { display: none !important; }
     * { cursor: auto !important; }
-    /* =========================================
-       ULTIMATE LEFT-GAP FIX (ONLY FOR MOBILE)
-    ========================================= */
-    html, body {
-        width: 100% !important;
-        max-width: 100% !important;
-        margin: 0 !important;
-        padding: 0 !important;
-        left: 0 !important;
-        overflow-x: hidden !important;
-        position: relative !important;
-    }
-
-    * {
-        box-sizing: border-box !important;
-    }
-}
-/* =========================================
-   ADVANCED SCROLL REVEALS (PRO JS EFFECT)
-========================================= */
-.reveal {
-    opacity: 0;
-    transform: translateY(40px) scale(0.98);
-    transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), 
-                transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
-    will-change: opacity, transform; /* Tells the browser GPU to handle this for zero lag */
-}
-
-/* The JS will automatically add this 'active' class when you scroll down */
-.reveal.active {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-}
-
-/* Smooth transitions for the Magnetic Buttons */
-.btn, .brand, .social-icon {
-    transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), background-color 0.2s, color 0.2s;
-    will-change: transform;
 }

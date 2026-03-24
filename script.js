@@ -6,7 +6,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const cursorDot = document.querySelector('.cursor-dot');
     const cursorOutline = document.querySelector('.cursor-outline');
     
-    // Default positions
     let mouseX = 0, mouseY = 0;
     let outlineX = 0, outlineY = 0;
 
@@ -14,19 +13,16 @@ document.addEventListener('DOMContentLoaded', () => {
         mouseX = e.clientX;
         mouseY = e.clientY;
         
-        // Dot follows instantly
         if(cursorDot) {
             cursorDot.style.left = `${mouseX}px`;
             cursorDot.style.top = `${mouseY}px`;
         }
     });
 
-    // Lerp (Linear Interpolation) function for the trailing effect
     const animateCursor = () => {
         let distX = mouseX - outlineX;
         let distY = mouseY - outlineY;
         
-        // Adjust the '0.15' to make the trail faster or slower
         outlineX = outlineX + (distX * 0.15);
         outlineY = outlineY + (distY * 0.15);
         
@@ -49,10 +45,8 @@ document.addEventListener('DOMContentLoaded', () => {
             const x = e.clientX - position.left - position.width / 2;
             const y = e.clientY - position.top - position.height / 2;
             
-            // Move the button slightly towards the cursor
             el.style.transform = `translate(${x * 0.3}px, ${y * 0.3}px)`;
             
-            // Expand cursor
             if(cursorOutline) {
                 cursorOutline.style.transform = 'translate(-50%, -50%) scale(1.5)';
                 cursorOutline.style.backgroundColor = 'rgba(37, 99, 235, 0.1)';
@@ -60,10 +54,8 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         el.addEventListener('mouseleave', () => {
-            // Reset button position with a spring effect
             el.style.transform = `translate(0px, 0px)`;
             
-            // Reset cursor
             if(cursorOutline) {
                 cursorOutline.style.transform = 'translate(-50%, -50%) scale(1)';
                 cursorOutline.style.backgroundColor = 'transparent';
@@ -82,14 +74,12 @@ document.addEventListener('DOMContentLoaded', () => {
             const x = e.clientX - rect.left;
             const y = e.clientY - rect.top;
             
-            // Glow effect center
             card.style.setProperty('--mouse-x', `${x}px`);
             card.style.setProperty('--mouse-y', `${y}px`);
 
-            // Calculate 3D rotation based on mouse position
             const centerX = rect.width / 2;
             const centerY = rect.height / 2;
-            const rotateX = ((y - centerY) / centerY) * -5; // Max rotation 5deg
+            const rotateX = ((y - centerY) / centerY) * -5;
             const rotateY = ((x - centerX) / centerX) * 5;
 
             card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
@@ -101,7 +91,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     /* ==========================================
-       4. Advanced Intersection Observer (Staggered Reveals)
+       4. Advanced Intersection Observer (Reveals)
     ========================================== */
     const revealElements = document.querySelectorAll('.reveal');
     
@@ -113,10 +103,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const revealObserver = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
             if (!entry.isIntersecting) return;
-            
-            // Add a class instead of inline styles for cleaner CSS management
             entry.target.classList.add('active');
-            observer.unobserve(entry.target); // Stop observing once revealed
+            observer.unobserve(entry.target);
         });
     }, revealOptions);
 
@@ -183,14 +171,13 @@ document.addEventListener('DOMContentLoaded', () => {
     counters.forEach(counter => {
         counterObserver.observe(counter);
     });
+
     /* ==========================================
        7. Typewriter Effect
     ========================================== */
     const typingTextElement = document.querySelector('.typing-text');
     
     if (typingTextElement) {
-        // Words to cycle through. You can change these!
-// Words to cycle through
         const words = [
             "Graphic Designer.", 
             "Web Developer.", 
@@ -206,32 +193,46 @@ document.addEventListener('DOMContentLoaded', () => {
             const currentWord = words[wordIndex];
             
             if (isDeleting) {
-                // Delete character by character
                 typingTextElement.textContent = currentWord.substring(0, charIndex - 1);
                 charIndex--;
             } else {
-                // Type character by character
                 typingTextElement.textContent = currentWord.substring(0, charIndex + 1);
                 charIndex++;
             }
             
-            // Speed control
-            let typeSpeed = isDeleting ? 40 : 100; // Types at 100ms, deletes faster at 40ms
+            let typeSpeed = isDeleting ? 40 : 100;
             
-            // Pause logic at the end of a word or before starting a new one
             if (!isDeleting && charIndex === currentWord.length) {
                 isDeleting = true;
-                typeSpeed = 2000; // Pause for 2 seconds when the word is fully typed
+                typeSpeed = 2000;
             } else if (isDeleting && charIndex === 0) {
                 isDeleting = false;
-                wordIndex = (wordIndex + 1) % words.length; // Move to the next word
-                typeSpeed = 500; // Pause for half a second before typing the next word
+                wordIndex = (wordIndex + 1) % words.length;
+                typeSpeed = 500;
             }
             
             setTimeout(typeEffect, typeSpeed);
         };
         
-        // Start the typing effect loop
         setTimeout(typeEffect, 1000);
     }
+
+    /* ==========================================
+       8. NEW: Parallax Background Blobs
+    ========================================== */
+    const blobs = document.querySelectorAll('.blob');
+    
+    if(blobs.length > 0) {
+        window.addEventListener('mousemove', (e) => {
+            // Calculate movement based on mouse position
+            const x = (window.innerWidth - e.pageX * 2) / 90;
+            const y = (window.innerHeight - e.pageY * 2) / 90;
+            
+            blobs.forEach(blob => {
+                // Moving blobs smoothly opposite to the mouse
+                blob.style.transform = `translate(${x}px, ${y}px)`;
+            });
+        });
+    }
+
 });

@@ -6,7 +6,8 @@
     <title>RJ Sakib | Digital Architect & SEO Strategist</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet"></head>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
 <body>
 
     <div class="cursor-dot"></div>
@@ -17,12 +18,12 @@
             <a href="#" class="brand">RJ<span>Sakib</span></a>
             <ul class="nav-menu">
                 <li><a href="#home" class="nav-link">Home</a></li>
-                <li><a href="#about" class="nav-link">About</a></li>
                 <li><a href="#services" class="nav-link">Expertise</a></li>
-                <li><a href="#work" class="nav-link">Projects</a></li>
+                <li><a href="#work" class="nav-link">Projects</a></li> 
+                <li><a href="#contact" class="nav-link">Contact</a></li>
             </ul>
             <div class="nav-right">
-                <a href="#contact" class="btn btn-primary">Let's Talk</a>
+                <a href="#contact" class="btn btn-primary hover-lift">Let's Talk</a>
                 <div class="hamburger">
                     <span class="bar"></span>
                     <span class="bar"></span>
@@ -113,37 +114,40 @@
             </div>
         </div>
     </section>
-        <section class="typewriter-section">
+
+    <section class="typewriter-section">
         <div class="container text-center reveal">
             <h2 class="typewriter-heading">
                 I specialize in <br>
                 <span class="typing-text text-gradient"></span><span class="typed-cursor">|</span>
             </h2>
         </div>
-        </section>
+    </section>
+
     <section id="contact" class="contact section-padding">
         <div class="container reveal">
             <div class="contact-wrapper glass-panel">
+                
                 <div class="contact-info">
                     <h2>Ready to scale your digital presence?</h2>
                     <p>Let's discuss your project, your goals, and how we can work together to achieve them.</p>
                     
                     <div class="contact-details mt-4">
-                        <div class="contact-item">
+                        <div class="contact-item hover-lift">
                             <div class="icon-box"><i class="fa-solid fa-phone"></i></div>
                             <div>
                                 <h4>Call Me</h4>
                                 <a href="tel:01722310821">01722310821</a>
                             </div>
                         </div>
-                        <div class="contact-item">
+                        <div class="contact-item hover-lift">
                             <div class="icon-box"><i class="fa-solid fa-envelope"></i></div>
                             <div>
                                 <h4>Email Me</h4>
                                 <a href="mailto:raonaksakib@gmail.com">raonaksakib@gmail.com</a>
                             </div>
                         </div>
-                        <div class="contact-item">
+                        <div class="contact-item hover-lift">
                             <div class="icon-box"><i class="fa-solid fa-location-dot"></i></div>
                             <div>
                                 <h4>Location</h4>
@@ -153,13 +157,36 @@
                     </div>
                 </div>
                 
-                <div class="contact-cta text-center">
-                    <h3>Fastest way to reach me</h3>
-                    <a href="https://wa.me/01722310821" target="_blank" class="btn btn-whatsapp btn-lg hover-lift mt-2">
-                        <i class="fa-brands fa-whatsapp"></i> Chat on WhatsApp
-                    </a>
-                    <p class="mt-2 text-sm text-gray">Available during standard business hours.</p>
+                <div class="contact-form-box">
+                    <h3>Send a Message</h3>
+                    <p class="text-sm mb-4">I'll get back to you within 24 hours.</p>
+                    
+                    <form action="https://api.web3forms.com/submit" method="POST" class="contact-form">
+                        <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE">
+                        
+                        <div class="input-group">
+                            <input type="text" name="name" placeholder="Your Name" required>
+                        </div>
+                        <div class="input-group">
+                            <input type="email" name="email" placeholder="Your Email" required>
+                        </div>
+                        <div class="input-group">
+                            <textarea name="message" rows="4" placeholder="Your Message" required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary w-full hover-lift">
+                            Send Message <i class="fa-solid fa-paper-plane"></i>
+                        </button>
+                    </form>
+                    
+                    <div class="text-center mt-4 pt-4" style="border-top: 1px solid rgba(255,255,255,0.1);">
+                        <p class="text-sm" style="color: rgba(255,255,255,0.5); margin-bottom: 10px;">Or for a faster response:</p>
+                        <a href="https://wa.me/01722310821" target="_blank" class="btn btn-whatsapp w-full hover-lift">
+                            <i class="fa-brands fa-whatsapp"></i> Chat on WhatsApp
+                        </a>
+                    </div>
                 </div>
+
             </div>
         </div>
     </section>
