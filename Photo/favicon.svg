@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <rect width="512" height="512" rx="120" fill="#0f172a" />
+  
+  <text x="48%" y="54%" font-family="Arial, sans-serif" font-size="260" font-weight="900" fill="#ffffff" text-anchor="middle" dominant-baseline="middle" letter-spacing="-15">
+    R<tspan fill="#2563eb">J</tspan>
+  </text>
+
+  <circle cx="390" cy="370" r="30" fill="#10b981" />
+</svg>
