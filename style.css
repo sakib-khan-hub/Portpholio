@@ -616,13 +616,28 @@ h1, h2, h3, h4 {
 .contact-item a, .contact-item p { font-size: 1.2rem; font-weight: 600; color: var(--text-primary); text-decoration: none; }
 .contact-item a:hover { color: var(--accent-color); }
 
+/* =========================================
+   CONTACT CTA BOX (DARK THEME)
+========================================= */
 .contact-cta {
     display: flex;
     flex-direction: column;
     justify-content: center;
     padding: 3rem;
-    background: var(--bg-main);
+    background: #0f172a; /* চমৎকার একটি ডার্ক কালার (কালো) */
     border-radius: var(--radius-md);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); /* হালকা শ্যাডো যাতে বক্সটা ভেসে থাকে */
+}
+
+/* হেডলাইন সাদা করার জন্য */
+.contact-cta h3 {
+    color: #ffffff; 
+    margin-bottom: 1rem;
+}
+
+/* নিচের ছোট লেখাটি হালকা সাদা/গ্রে করার জন্য */
+.contact-cta p.text-sm {
+    color: rgba(255, 255, 255, 0.7); 
 }
 
 /* =========================================
