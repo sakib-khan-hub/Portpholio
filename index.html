@@ -162,24 +162,28 @@
                     <h3>Send a Message</h3>
                     <p class="text-sm mb-4">I'll get back to you within 24 hours.</p>
                     
-                    <form action="https://api.web3forms.com/submit" method="POST" class="contact-form">
-                        <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE">
-                        
-                        <div class="input-group">
-                            <input type="text" name="name" placeholder="Your Name" required>
-                        </div>
-                        <div class="input-group">
-                            <input type="email" name="email" placeholder="Your Email" required>
-                        </div>
-                        <div class="input-group">
-                            <textarea name="message" rows="4" placeholder="Your Message" required></textarea>
-                        </div>
-                        
-                        <button type="submit" class="btn btn-primary w-full hover-lift">
-                            Send Message <i class="fa-solid fa-paper-plane"></i>
-                        </button>
-                    </form>
-                    
+                <form action="https://api.web3forms.com/submit" method="POST" class="contact-form">
+    
+                    <input type="hidden" name="access_key" value="73e8d08c-16b8-4c9f-b9b3-1582e788e9b5">
+    
+                    <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+
+                    <div class="input-group">
+                        <input type="text" name="name" placeholder="Your Name" required>
+                    </div>
+    
+                    <div class="input-group">
+                       <input type="email" name="email" placeholder="Your Email" required>
+                    </div>
+    
+                    <div class="input-group">
+                        <textarea name="message" rows="4" placeholder="Your Message" required></textarea>
+                    </div>
+    
+                    <button type="submit" class="btn btn-primary w-full hover-lift">
+                        Send Message <i class="fa-solid fa-paper-plane"></i>
+                    </button>
+                </form>
                     <div class="text-center mt-4 pt-4" style="border-top: 1px solid rgba(255,255,255,0.1);">
                         <p class="text-sm" style="color: rgba(255,255,255,0.5); margin-bottom: 10px;">Or for a faster response:</p>
                         <a href="https://wa.me/01722310821" target="_blank" class="btn btn-whatsapp w-full hover-lift">
